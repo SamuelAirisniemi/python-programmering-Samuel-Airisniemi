@@ -24,6 +24,7 @@ plt.scatter(x[z == 0], y[z == 0], color = "black", label = "Pichu", alpha = 0.5)
 plt.scatter(x[z == 1], y[z == 1], color = "yellow", label = "Pikachu", alpha = 0.5)
 plt.scatter(test_x, test_y, color = "red", label = "Testpunkter")
 
+
 plt.title("Pichu vs Pikachu")
 plt.xlabel("Width (cm)")
 plt.ylabel("Height (cm)")
