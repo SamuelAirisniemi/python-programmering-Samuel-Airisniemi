@@ -1,29 +1,31 @@
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
-import re
 
-df = pd.read_csv("Labs/datapoints.txt")
-df.columns = df.columns.str.strip()
+x = []
+y = []
+z = []
 
-x = df["(width (cm)"]
-y = df["height (cm)"]
-z = df["label (0-pichu"]
+with open("Labs/datapoints.txt", "r") as f:
+    next(f)  # Hoppa över rubrikraden
+    for line in f:
+        parts = line.strip().split(",")
+        if len(parts) == 3:
+            x.append(float(parts[0]))
+            y.append(float(parts[1]))
+            z.append(int(parts[2]))
 
 test_x = []
 test_y = []
 
 with open("Labs/testpoints.txt", "r") as f:
     for line in f:
-        match = re.search(r"\(([\d\.]+),\s*([\d\.]+)\)", line)
-        if match:
-            test_x.append(float(match.group(1)))
-            test_y.append(float(match.group(2)))
+        if "(" in line:
+            coords = line[line.find("(")+1:line.find(")")].split(",")
+            test_x.append(float(coords[0]))
+            test_y.append(float(coords[1]))
 
-plt.scatter(x[z == 0], y[z == 0], color = "black", label = "Pichu", alpha = 0.5)
-plt.scatter(x[z == 1], y[z == 1], color = "yellow", label = "Pikachu", alpha = 0.5)
-plt.scatter(test_x, test_y, color = "red", label = "Testpunkter")
-
+plt.scatter([a for a, b in zip(x, z) if b == 0], [a for a, b in zip(y, z) if b == 0], color="black", label="Pichu", alpha=0.5)
+plt.scatter([a for a, b in zip(x, z) if b == 1], [a for a, b in zip(y, z) if b == 1], color="yellow", label="Pikachu", alpha=0.5)
+plt.scatter(test_x, test_y, color="red", label="Testpunkter")
 
 plt.title("Pichu vs Pikachu")
 plt.xlabel("Width (cm)")
@@ -32,5 +34,5 @@ plt.legend()
 plt.grid()
 plt.show()
 
-print(df.head())
+print("Datapunkter:", list(zip(x, y, z)))
 print("Testpunkter:", list(zip(test_x, test_y)))
