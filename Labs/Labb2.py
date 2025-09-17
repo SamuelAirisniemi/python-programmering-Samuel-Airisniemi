@@ -20,9 +20,9 @@ with open("Labs/testpoints.txt", "r") as f:
             test_x.append(float(match.group(1)))
             test_y.append(float(match.group(2)))
 
-plt.scatter(x[z == 0], y[z == 0], color='black', label='Pichu', alpha=0.5)
-plt.scatter(x[z == 1], y[z == 1], color='yellow', label='Pikachu', alpha=0.5)
-plt.scatter(test_x, test_y, color='red', label='Test Points')
+plt.scatter(x[z == 0], y[z == 0], color = "black", label = "Pichu", alpha = 0.5)
+plt.scatter(x[z == 1], y[z == 1], color = "yellow", label = "Pikachu", alpha = 0.5)
+plt.scatter(test_x, test_y, color = "red", label = "Testpunkter")
 
 plt.title("Pichu vs Pikachu")
 plt.xlabel("Width (cm)")
@@ -32,4 +32,4 @@ plt.grid()
 plt.show()
 
 print(df.head())
-print("Test points:", list(zip(test_x, test_y)))
+print("Testpunkter:", list(zip(test_x, test_y)))
