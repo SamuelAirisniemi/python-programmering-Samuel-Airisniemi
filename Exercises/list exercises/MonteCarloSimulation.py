@@ -14,7 +14,6 @@ outside = d >= 1
 plt.figure(figsize=(8, 8))
 plt.scatter(x[inside], y[inside], color = "blue", label = "(d < 1)")
 plt.scatter(x[outside], y[outside], color = "orange", label = "(d > 1)")
-plt.gca().set_aspect("equal", adjustable="box")
 plt.title("Simulation of 5000 points")
 plt.xlabel('x')
 plt.ylabel('y')
