@@ -1,10 +1,12 @@
-num = int(input("Skriv in ett nummer: "))
+number = int(input("Enter a number: "))
 
-if num % 2 == 0 and num % 5 == 0:
-    print(f"Numret {num} är jämnt och delbart med 5.")
-elif num % 2 != 0 and num % 5 == 0:
-    print(f"Numret {num} är udda och delbart med 5.")
-elif num % 2 == 0:
-    print(f"Numret {num} är jämnt men inte delbart med 5.")
+if number % 2 == 0:
+    print("Talet är jämt")
 else:
-    print(f"Numret {num} är udda och inte delbart med 5.")
+    print("Talet är ojämt")
+
+if number % 5 == 0:
+    print("Talet är delbart med 5")
+
+if number % 5 == 0 and number % 2 != 0:
+    print("Talet är delbart med 5 och är ojämt")

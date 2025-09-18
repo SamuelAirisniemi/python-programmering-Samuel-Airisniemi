@@ -1,13 +1,10 @@
-vinkel1 = float(input("Ange den första vinkeln i grader: "))
-vinkel2 = float(input("Ange den andra vinkeln i grader: "))
-vinkel3 = float(input("Ange den tredje vinkeln i grader: "))
+vinkel1 = float(input("Ange den första vinkeln: "))
+vinkel2 = float(input("Ange den andra vinkeln: "))
+vinkel3 = float(input("Ange den tredje vinkeln: "))
 
-summa = vinkel1 + vinkel2 + vinkel3
-
-if vinkel1 > 0 and vinkel2 > 0 and vinkel3 > 0 and summa == 180:
-    if vinkel1 == 90 or vinkel2 == 90 or vinkel3 == 90:
-        print("Triangeln är en rätvinklig triangel.")
-    else:
-        print("Triangeln är inte rätvinklig.")
+if vinkel1 + vinkel2 + vinkel3 != 180:
+    print("Vinklarna formar inte en triangel!")
+elif vinkel1 == 90 or vinkel2 == 90 or vinkel3 == 90:
+    print("Triangeln är rätvinklig")
 else:
-    print("Vinklarna är ogiltiga och bildar inte en triangel.")
+    print("Din triangel har ingen rät vinkel")
