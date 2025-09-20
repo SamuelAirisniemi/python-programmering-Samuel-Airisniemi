@@ -32,7 +32,4 @@ while True:
     spela_igen = input("Vill du spela igen? (J/N): ")
     if spela_igen.upper() != 'J':
         print("Tack för att du spelade!")
-        break
-    
-
-
+        break   
