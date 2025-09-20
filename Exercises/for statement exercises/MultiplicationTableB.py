@@ -6,4 +6,4 @@ print(f"Your {table + 'th'} multiplication table from {start} to {end}: ")
 
 for i in range(start, end + 1):
     product = int(table) * i
-    print(f"{int(table) * i}", end=' ')
+    print(f"{product}", end=' ')
