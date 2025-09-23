@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-widht = []
+width = []
 height = []
 label = []
 testx = []
@@ -12,7 +12,7 @@ with open("Labs/datapoints.txt", "r") as file:
     for line in file:
         parts = line.strip().split(",")
         if len(parts) == 3:
-            widht.append(float(parts[0]))
+            width.append(float(parts[0]))
             height.append(float(parts[1]))
             label.append(int(parts[2]))
 
@@ -23,7 +23,7 @@ with open("Labs/testpoints.txt", "r") as file:
             testx.append(float(coords[0]))
             testy.append(float(coords[1]))
 
-data_points = np.array(list(zip(widht, height)))
+data_points = np.array(list(zip(width, height)))
 train_labels = np.array(label)
 test_points = np.array(list(zip(testx, testy)))
 label_names = {0: "Pichu", 1: "Pikachu"}
@@ -46,7 +46,7 @@ predictions = [knn_classify(point, data_points, train_labels, k) for point in te
 for (x_cord, y_cord), pred in zip(test_points, predictions):
     print(f"Test point ({x_cord}, {y_cord}) identified as: {label_names[pred]}")
 
-print("Datapunkter", np.array(list(zip(widht, height, label))))
+print("Datapunkter", np.array(list(zip(width, height, label))))
 print("Testpunkter:", list(zip(testx, testy)))
 
 def identify_user_input():
@@ -71,8 +71,8 @@ def identify_user_input():
             continue
 
         user_point = np.array([width_input, height_input])
-        nearest_index = knn_classify(user_point, data_points, train_labels, k)
-        identification = label_names[train_labels[nearest_index]]
+        predicted_label = knn_classify(user_point, data_points, train_labels, k)
+        identification = label_names[predicted_label]
 
         print(f"Point ({width_input}, {height_input}) is identified as {identification}")
 
@@ -80,9 +80,9 @@ def identify_user_input():
         plt.legend() 
         break
 
-plt.scatter([w for w, l in zip(widht, label) if l == 0], [h for h, l in zip(height, label) if l == 0], color = "black", label = "Pichu", alpha = 0.5)
-plt.scatter([w for w, l in zip(widht, label) if l == 1], [h for h, l in zip(height, label) if l == 1], color = "yellow", label = "Pikachu", alpha = 0.5)
-plt.scatter(testx, testy, color = "red", marker = "*", label = "Testpunkter")
+plt.scatter([w for w, l in zip(width, label) if l == 0], [h for h, l in zip(height, label) if l == 0], color = "black", label = "Pichu", alpha = 0.5)
+plt.scatter([w for w, l in zip(width, label) if l == 1], [h for h, l in zip(height, label) if l == 1], color = "yellow", label = "Pikachu", alpha = 0.5)
+plt.scatter(testx, testy, color = "red", marker = "*", label = "Testpoints")
 plt.title("Pichu vs Pikachu")
 plt.xlabel("Width (cm)")
 plt.ylabel("Height (cm)")
