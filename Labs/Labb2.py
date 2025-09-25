@@ -37,19 +37,19 @@ def identify_user_input():
     while True:
         user_input = input("Enter the x and y point separated by a comma: ").strip()
         if not user_input:
-            print("Input can't be empty. Please try again!")
+            print("Input can't be empty. Please try again.")
             continue
         parts = user_input.split(",")
         if len(parts) != 2:
-            print("Please enter two numbers separated by a comma!")
+            print("Please enter two numbers separated by a comma.")
             continue
         try:
             x, y = float(parts[0]), float(parts[1])
         except ValueError:
-            print("Invalid input: please enter numeric values only!")
+            print("Invalid input: please enter numeric values only.")
             continue
         if x < 0 or y < 0:
-            print("Your input can not be negative. Please enter two positive numbers!")
+            print("Your input can not be negative. Please enter two positive numbers.")
             continue
 
         user_point = np.array([x, y])
