@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Läser in txt-fil och returnerar två arrayer med width, height och tillhärande label.
+#Returnerar arrays
 def load_data(filepath):
     widths, heights, labels = [], [], []
     with open(filepath, "r") as file:
@@ -15,6 +16,7 @@ def load_data(filepath):
     return np.array(list(zip(widths, heights))), np.array(labels)
 
 #Läser in testdata från en txt-fil med koordinater (x, y) och returnerar dem som float-värden.
+#Returnerar arrays
 def load_test(filepath):
     test_x, test_y = [], []
     with open(filepath, "r") as file:
@@ -92,7 +94,6 @@ if len(test_labels) > 0:
     print(f"TP = {TP}, TN = {TN}")
     print(f"Accuracy = {accuracy:.2f}")
 
-#Läser in testpunkter och klassificerar dem med knn och skriver ut dem med förutsagd label.
 external_test_points = load_test("Labs/testpoints.txt")
 external_predictions = [knn_classify(p, train_points, train_labels, k) for p in external_test_points]
 
@@ -106,13 +107,10 @@ train_x, train_y = train_points[:, 0], train_points[:, 1]
 mask_pichu = (train_labels == 0)
 mask_pikachu = (train_labels == 1)
 
-#Hämtar användarens input och klassificerar den.
 user_x, user_y = identify_user_input()
 
-#Skapar en figur med två delplottar brevid varandra.
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
 
-#Plottar träningsdata för Pichu och Pikachu i första subplotten.
 ax1.scatter(train_x[mask_pichu], train_y[mask_pichu], color = "black", label = "Pichu", alpha = 0.5)
 ax1.scatter(train_x[mask_pikachu], train_y[mask_pikachu], color = "yellow", label = "Pikachu", alpha = 0.5)
 
@@ -135,11 +133,9 @@ if len(test_points) > 0:
         incorrect_x, incorrect_y = zip(*incorrect_points)
         ax1.scatter(incorrect_x, incorrect_y, color = "red", marker = "x", label = "Incorrect")
 
-#Plottar externa testpunkter i orange och användarens input som en blå stjärna.
 ax1.scatter(external_test_points[:, 0], external_test_points[:, 1], color = "orange", label = "Testpoints")
 ax1.scatter(user_x, user_y, color = "blue", marker = "*", label = "User Input")
 
-#Ger titlar, grid och legend till första plotten.
 ax1.set_title("Pichu vs Pikachu")
 ax1.set_xlabel("Width (cm)")
 ax1.set_ylabel("Height (cm)")
@@ -167,16 +163,13 @@ for i in range(10):
     acc = (TP + TN) / len(loop_test_label)
     accuracies.append(acc)
 
-#Plottar träffsäkerheten från 10 tester i andra subplotten och visar medelvärdet.
 ax2.plot(range(1, 11), accuracies, marker = "o", color = "purple")
 ax2.set_title("Accuracy for 10 tests")
 ax2.set_xlabel("Tests")
 ax2.set_ylabel("Accuracy")
 ax2.grid()
 
-#Skriver ut medelvärdet och träffsäkerheten från de 10 testerna.
 print(f"Medium accuracy for 10 tests: {np.mean(accuracies):.2f}")
 
-#Justerar och visar hela figuren.
 plt.tight_layout()
 plt.show()
