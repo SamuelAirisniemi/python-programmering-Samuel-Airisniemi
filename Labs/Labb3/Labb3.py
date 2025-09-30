@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 path = "Labs/Labb3/unlabelled_data (1).csv"
 
@@ -12,6 +13,13 @@ with open(path, "r") as f:
             x.append(x_val)
             y.append(y_val)
 
+k = -2
+m = 0
+
+x_line = np.linspace(min(x), max(x), 4)
+y_line = k * x_line + m
+
+plt.plot(x_line, y_line)
 plt.scatter(x, y)
 plt.xlabel("x")
 plt.ylabel("y")
