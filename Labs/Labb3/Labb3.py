@@ -27,10 +27,16 @@ with open(unlabelled, "r") as f_read:
 
 k = -2
 m = 0
+count_0 = 0
+count_1 = 0
 
 with open(labelled, "w") as f_write:
     for x_point, y_point in zip(x, y):
         side = point_side(x_point, y_point, k, m)
+        if side == 0:
+            count_0 += 1
+        else:
+            count_1 +=1
         f_write.write(f"({x_point:.1f}, {y_point:.1f}), {side}\n")
 
 x_line = np.linspace(min(x), max(x))
@@ -43,8 +49,8 @@ y_right = [yi for xi, yi in zip(x, y) if point_side(xi, yi, k, m) == 1]
 
 plt.figure(figsize=(8, 6))
 plt.plot(x_line, y_line, label = (f"y = {k}x + {m}"), color = "blue")
-plt.scatter(x_left, y_left, color = "red", label = "Vänster (0)")
-plt.scatter(x_right, y_right, color = "green", label = "Höger (1)")
+plt.scatter(x_left, y_left, color = "red", label = (f"Vänster (0) - {count_0})"))
+plt.scatter(x_right, y_right, color = "green", label = (f"Höger (1) - {count_1}"))
 plt.xlabel("x")
 plt.ylabel("y")
 plt.title("Labb 3")
