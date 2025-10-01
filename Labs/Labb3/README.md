@@ -1,4 +1,4 @@
-# Laboration 3 
+# Laboration 3 - Linjär klassificering
 
 ## Beskrivning
 
