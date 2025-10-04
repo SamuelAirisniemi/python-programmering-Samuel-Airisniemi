@@ -56,7 +56,7 @@ plt.plot(x_line, y_line, label = (f"y = {k}x + {m}"), color = "blue")
 plt.plot(x_line, f_line, label = "f(x) = -0.489x", color = "purple") #VG
 plt.plot(x_line, g_line, label = "g(x) = -2x + 0.16", color = "yellow") #VG
 plt.plot(x_line, h_line, label = "h(x) = 800x - 120", color = "orange") #VG
-plt.scatter(x_left, y_left, color = "red", label = (f"Vänster (0) - {count_0})"))
+plt.scatter(x_left, y_left, color = "red", label = (f"Vänster (0) - {count_0}"))
 plt.scatter(x_right, y_right, color = "green", label = (f"Höger (1) - {count_1}"))
 plt.title("Labb 3")
 plt.xlabel("x")
